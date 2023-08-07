@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { FileReaderComponent } from '../components/fileReader'
 
 const Home = () => {

@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { uploadFile } from "../data/slices/uploadSlice";
-import uuid from "react-uuid";
 import { setRutina } from "../data/slices/editorSlice";
 
 export const FileReaderComponent = () => {

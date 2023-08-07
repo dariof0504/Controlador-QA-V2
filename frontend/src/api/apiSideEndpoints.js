@@ -15,8 +15,15 @@ export const apiSide = sliceSideReducer.injectEndpoints({
                 method: 'POST',
                 body: {...cred}
             })
+        }),
+        saveRutina: builder.mutation({
+            query: cred => ({
+                url: 'save',
+                method: 'POST',
+                body: {...cred}
+            })
         })
     })
 })
 
-export const { useTestQuery, useSideFilterMutation } = apiSide
+export const { useTestQuery, useSideFilterMutation, useSaveRutinaMutation } = apiSide

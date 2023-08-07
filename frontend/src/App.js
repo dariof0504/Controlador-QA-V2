@@ -3,6 +3,7 @@ import Home from "./pages/main";
 import { Succes } from "./pages/succes";
 import { IndividualCommandView } from "./pages/editorPage/individualCommandView";
 import { ListCommandView } from "./pages/editorPage/listCommandPage";
+import { ListRutinaView } from "./pages/listRutinaView";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/list" element={<ListCommandView />} />
         <Route path="/edit" element={<IndividualCommandView />} />
+        <Route path="/rutinas" element={<ListRutinaView />} />
         <Route path="/success" element={<Succes />} />
       </Routes>
     </BrowserRouter>
