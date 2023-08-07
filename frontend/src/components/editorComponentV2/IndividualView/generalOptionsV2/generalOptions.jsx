@@ -16,6 +16,7 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
   const fieldValues = {
     value: "",
     location: "",
+    titulo: ''
   };
 
   //Establecemos un estado para los apartados
@@ -44,27 +45,6 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
 
   return (
     <div>
-      {optionKeys.map((optional) => (
-        <>
-          <p>Instancia tipo {optional}</p>
-          {/* Llama al valor actual del comando en edicion */}
-          <p>Valor {comandoIndividual[optional]}</p>
-          {/* Segun las opciones cambien, hará el cambio directo al comando */}
-          <select
-            className={optional}
-            value={comandoIndividual[optional]}
-            onChange={(e) => handleComandoIndividualGeneral(e)}
-          >
-            {optionsValues[optional].map((o) => (
-              <option value={o}>{o}</option>
-            ))}
-          </select>
-          {/* En caso querramos volver al valor anterior, usamos este boton */}
-          <button onClick={() => handleCancel(optional)}>
-            Cancelar cambios
-          </button>
-        </>
-      ))}
       {fieldKeys.map((text) => (
         <>
           <p>Instancia tipo {text}</p>
@@ -88,6 +68,29 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
           <button onClick={() => handleCancel(text)}>Cancelar cambios</button>
         </>
       ))}
+
+      {optionKeys.map((optional) => (
+        <>
+          <p>Instancia tipo {optional}</p>
+          {/* Llama al valor actual del comando en edicion */}
+          <p>Valor {comandoIndividual[optional]}</p>
+          {/* Segun las opciones cambien, hará el cambio directo al comando */}
+          <select
+            className={optional}
+            value={comandoIndividual[optional]}
+            onChange={(e) => handleComandoIndividualGeneral(e)}
+          >
+            {optionsValues[optional].map((o) => (
+              <option value={o}>{o}</option>
+            ))}
+          </select>
+          {/* En caso querramos volver al valor anterior, usamos este boton */}
+          <button onClick={() => handleCancel(optional)}>
+            Cancelar cambios
+          </button>
+        </>
+      ))}
+      
     </div>
   );
 };

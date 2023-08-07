@@ -42,14 +42,10 @@ export const FileReaderComponent = () => {
     if (saveRutina) {
       //Si se ha cargado un archivo, realizamos el despacho de los datos de la siguiente manera
       if (cargarArchivo) {
-        const result = { ...rutinaInfo, ...dataFileUploaded, id: uuid() };
+        const result = { ...rutinaInfo, ...dataFileUploaded };
 
         dispatch(setRutina(result));
       } else {
-        const result = { ...rutinaInfo, id: uuid() };
-
-        setRutinaInfo(result);
-
         dispatch(setRutina(rutinaInfo));
       }
 
@@ -129,6 +125,7 @@ export const FileReaderComponent = () => {
         <div>
           <p>URL Objetivo</p>
           <input className="targetURL" onChange={(e) => handleRutinaInfo(e)} />
+          <p>Servicio en el que se ejecuta</p>
           <select
             className="servicio"
             onChange={(e) => handleRutinaInfo(e)}

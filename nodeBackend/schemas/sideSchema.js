@@ -13,6 +13,7 @@ class ActionSchema {
     this.index = index;
     this.value = accion.value;
     this.command = accion.command;
+    this.titulo = accion.comment
     this.tipoDeDato;
     this.propiedades;
 

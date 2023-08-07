@@ -47,26 +47,37 @@ export const FormAction = ({ data }) => {
 
   return (
     <form onSubmit={(e) => handleAddAction(e)}>
-      <select className="command" onChange={(e) => handleValue(e)}>
-        <option value="click">Click</option>
-        <option value="string">String</option>
-      </select>
+      <p>Titulo de la accion</p>
       <input
         required
         type="text"
-        className="location"
+        className="titulo"
         onChange={(e) => handleValue(e)}
       />
-      <select className="typeLocation" onChange={(e) => handleValue(e)}>
-        <option value="xpath">XPATH</option>
-        <option value="css">CSS Selector</option>
-      </select>
+      <p>Que valor tiene la accion</p>
       <input
         required
         type="text"
         className="value"
         onChange={(e) => handleValue(e)}
       />
+      <p>Seleccionar el tipo de comando</p>
+      <select className="command" onChange={(e) => handleValue(e)}>
+        <option value="click">Click</option>
+        <option value="string">String</option>
+      </select>
+      <p>Cual es la ubicacion del elemento</p>
+      <input
+        required
+        type="text"
+        className="location"
+        onChange={(e) => handleValue(e)}
+      />
+      <p>Cual es el tipo de ubicacion del elemento</p>
+      <select className="typeLocation" onChange={(e) => handleValue(e)}>
+        <option value="xpath">XPATH</option>
+        <option value="css">CSS Selector</option>
+      </select>      
       <button type="submit">Añadir accion</button>
     </form>
   );

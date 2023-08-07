@@ -11,11 +11,11 @@ export const ListCommands = ({ data }) => {
   const { comandos } = data;
   const dispatch = useDispatch();
 
-  const [fieldValues, setFieldValues] = {
+  const [fieldValues, setFieldValues] = useState({
     titulo: "",
     servicio: "",
     targetURL: "",
-  };
+  })
 
   const typeFieldKeys = ["titulo", "targetURL"];
 
@@ -28,7 +28,7 @@ export const ListCommands = ({ data }) => {
     const instance = e.target.className;
     const value = e.target.value
 
-    dispatch(setInstanceRutina({ instance, value }));
+    dispatch(setInstanceRutina({instance,value}))
   };
 
   return (
@@ -40,6 +40,8 @@ export const ListCommands = ({ data }) => {
         <option value='APPIUM' >APPIUM</option>
       </select>
 
+      
+
       {typeFieldKeys.map((field) => (
         <>
           <p>{field}</p>
@@ -47,19 +49,23 @@ export const ListCommands = ({ data }) => {
           <input
             type="text"
             className={field}
-            onChange={(e) => setFieldValues(e.target.value)}
+            onChange={(e) => setFieldValues({...fieldValues, [field] : e.target.value})}
           />
-          <button value={fieldValues[field]} className={field} onClick={() => handleEdit(e)}>
+          <button value={fieldValues[field]} className={field} onClick={(e) => handleEdit(e)}>
             Guardar cambios
           </button>
         </>
       ))}
+      <hr></hr>
+      <p>Añadir acciones</p>
+      <FormAction data={comandos} />
+      <hr></hr>
       {validador ? (
         comandos.map((comando) => <CommandTag comando={comando} />)
       ) : (
         <p>Aun no hay comandos</p>
       )}
-      <FormAction data={comandos} />
+      
     </div>
   );
 };

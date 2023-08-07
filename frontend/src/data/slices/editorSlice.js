@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { clickPropierties, typePropierties } from "../defaultProps";
+import uuid from "react-uuid";
 
 const updateIndex = (comando, comandos) => {
   const index = comandos.indexOf(comando);
@@ -81,6 +82,9 @@ const editorComponentSlice = createSlice({
       llaves.map((llave) => {
         state[llave] = payload[llave];
       });
+
+      state.id = uuid()
+
     },
     //Funcion para cambiar el estado de una instancias en especifico
     setInstanceRutina: (state, {payload}) => {

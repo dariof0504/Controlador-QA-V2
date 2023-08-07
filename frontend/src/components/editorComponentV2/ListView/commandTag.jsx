@@ -5,7 +5,7 @@ import uuid from 'react-uuid'
 
 export const CommandTag = ({comando}) => {
 
-  const index = comando.index
+  const { index, titulo, command } = comando
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -22,6 +22,8 @@ export const CommandTag = ({comando}) => {
 
   return (
     <div key={uuid()} >
+      <p>{titulo ? titulo : 'No tiene titulo'}</p>
+      <p>Tipo de accion {command}</p>
       <p>Accion numero {index}</p>
       <button onClick={() => handleSelectComandoIndividual()} >Editar</button>
       <button onClick={() => handleDeleteComando()} >Eliminar</button>
