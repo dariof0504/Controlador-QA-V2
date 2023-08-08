@@ -18,26 +18,15 @@ const initialState = {
   id: "",
   //Estos son los que se han utilizado antes
   comandos: [],
-  comandoIndividual: {}
-}
+  comandoIndividual: {},
+};
 
 const editorComponentSlice = createSlice({
   name: "editorComponent",
   initialState,
   reducers: {
-    //Funcion para seleccionar un comando para editar
-    selectComandoIndividual: (state, { payload }) => {
-      const index = payload;
-
-      state.comandoIndividual = state.comandos[index];
-    },
-    saveSelectComanddoIndividual: (state, { payload }) => {
-      state.comandoIndividual = payload;
-    },
-    deselectComandoIndividual: (state) => {
-      state.comandoIndividual = {};
-    },
     //Funcion para eliminar comandos
+    //Se usa en commandTag
     deleteComandos: (state, { payload }) => {
       const index = payload;
 
@@ -47,7 +36,52 @@ const editorComponentSlice = createSlice({
 
       state.comandos = result;
     },
+    //Funcion para seleccionar un comando para editar
+    //Se usa en commandTag
+    selectComandoIndividual: (state, { payload }) => {
+      const index = payload;
+
+      state.comandoIndividual = state.comandos[index];
+    },
+    //Funcion para guardar el comando actual en edicion
+    //Se usa en individualView
+    saveSelectComanddoIndividual: (state, { payload }) => {
+      state.comandoIndividual = payload;
+    },
+    //Funcion para eliminar el comando actual en edicion
+    //Se usa en individualView
+    deselectComandoIndividual: (state) => {
+      state.comandoIndividual = {};
+    },
+    //Funcion para guardar cambios de comando editado
+    //Se usa en individualView
+    setComandos: (state) => {
+      const index = state.comandoIndividual.index;
+
+      const result = { ...state.comandoIndividual };
+
+      const newComandos = state.comandos.map((comando) =>
+        comando.index === index ? result : comando
+      );
+
+      state.comandos = newComandos;
+    },
+    //Funcion para cambiar el estado de una instancias en especifico
+
+    //Se usa en listCommands
+    setInstanceRutina: (state, { payload }) => {
+      const { instance, value } = payload;
+
+      state[instance] = value;
+    },
+    //Se usa en listCommands
+    deleteAllEditInfo: (state) => {
+      const llavesIniciales = Object.keys(initialState);
+
+      llavesIniciales.map((llave) => (state[llave] = initialState[llave]));
+    },
     //Funcion para añadir comandos
+    //Se usa en formAction
     addComandos: (state, { payload }) => {
       const comando = payload;
 
@@ -66,40 +100,17 @@ const editorComponentSlice = createSlice({
 
       state.comandos = result;
     },
-    //Funcion para guardar cambios de comando editado
-    setComandos: (state) => {
-      const index = state.comandoIndividual.index;
 
-      const result = { ...state.comandoIndividual };
-
-      const newComandos = state.comandos.map((comando) =>
-        comando.index === index ? result : comando
-      );
-
-      state.comandos = newComandos;
-    },
     //Funcion para establecer los comandos iniciales
+    //Se utiliza en fileReader
     setRutina: (state, { payload }) => {
       const llaves = Object.keys(payload);
       llaves.map((llave) => {
         state[llave] = payload[llave];
       });
 
-      state.id = uuid()
-
+      state.id = uuid();
     },
-    //Funcion para cambiar el estado de una instancias en especifico
-    setInstanceRutina: (state, {payload}) => {
-      const { instance, value } = payload
-
-      state[instance] = value
-    },
-    deleteAllEditInfo: (state) => {
-      const llavesIniciales = Object.keys(initialState)
-
-      llavesIniciales.map(llave => state[llave] = initialState[llave])
-      
-    }
   },
 });
 
@@ -116,7 +127,7 @@ export const {
   setRutina,
   setInstanceRutina,
   //Funcion para eliminar informacion cuando se hace el envio
-  deleteAllEditInfo
+  deleteAllEditInfo,
 } = editorComponentSlice.actions;
 
 export default editorComponentSlice.reducer;
