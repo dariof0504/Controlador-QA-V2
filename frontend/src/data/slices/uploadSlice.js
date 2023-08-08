@@ -21,9 +21,13 @@ const uploadSlice = createSlice({
         numeroAcciones: payload.data.commands.length,
       };
     },
+    //Para eliminar la info cuando se envia
+    deleteInfo: (state) => {
+      state.test = initialState.test;
+    },
   },
 });
 
-export const { uploadFile } = uploadSlice.actions;
+export const { uploadFile, deleteInfo } = uploadSlice.actions;
 
 export default uploadSlice.reducer;

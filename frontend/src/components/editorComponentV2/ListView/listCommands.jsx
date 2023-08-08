@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { FormAction } from "./formAction";
 import { useDispatch, useSelector } from "react-redux";
-import { setInstanceRutina } from "../../../data/slices/editorSlice";
+import { deleteAllEditInfo, setInstanceRutina } from "../../../data/slices/editorSlice";
 import { useSaveRutinaMutation } from "../../../api/apiSideEndpoints";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +25,7 @@ export const ListCommands = ({ data }) => {
     targetURL: "",
   })
 
-  const [rutina, setRutina] = useState({})
+
   const typeFieldKeys = ["titulo", "targetURL"];
 
 
@@ -45,7 +45,11 @@ export const ListCommands = ({ data }) => {
 
   const handleSaveEdit = async () => {
     const data = await request(rutinaEdit)
-    console.log(data)
+    
+    //Cuando se envie, limpiamos los datos
+    dispatch(deleteAllEditInfo())
+
+    //Realizamos la navegacion
     navigate('/rutinas')
   }
 

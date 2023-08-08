@@ -8,8 +8,8 @@ const saveRutinaController = async (req, res) => {
 
     const dbResult = await rutina_element.create(result)
 
-    console.log(dbResult)
-    res.json(dbResult);
+    console.log(Object.keys(dbResult))
+    res.json(dbResult.dataValues);
   } catch (error) {}
 };
 

@@ -10,18 +10,20 @@ const updateIndex = (comando, comandos) => {
   return result;
 };
 
+const initialState = {
+  titulo: "",
+  servicio: "",
+  numeroAcciones: 0,
+  targetURL: "",
+  id: "",
+  //Estos son los que se han utilizado antes
+  comandos: [],
+  comandoIndividual: {}
+}
+
 const editorComponentSlice = createSlice({
   name: "editorComponent",
-  initialState: {
-    titulo: "",
-    servicio: "",
-    numeroAcciones: 0,
-    targetURL: "",
-    id: "",
-    //Estos son los que se han utilizado antes
-    comandos: [],
-    comandoIndividual: {}
-  },
+  initialState,
   reducers: {
     //Funcion para seleccionar un comando para editar
     selectComandoIndividual: (state, { payload }) => {
@@ -91,6 +93,12 @@ const editorComponentSlice = createSlice({
       const { instance, value } = payload
 
       state[instance] = value
+    },
+    deleteAllEditInfo: (state) => {
+      const llavesIniciales = Object.keys(initialState)
+
+      llavesIniciales.map(llave => state[llave] = initialState[llave])
+      
     }
   },
 });
@@ -106,7 +114,9 @@ export const {
   saveSelectComanddoIndividual,
   //Funciones para el cambio del estado de la rutina
   setRutina,
-  setInstanceRutina
+  setInstanceRutina,
+  //Funcion para eliminar informacion cuando se hace el envio
+  deleteAllEditInfo
 } = editorComponentSlice.actions;
 
 export default editorComponentSlice.reducer;

@@ -2,7 +2,7 @@ import { useSideFilterMutation } from "../api/apiSideEndpoints";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { uploadFile } from "../data/slices/uploadSlice";
+import { deleteInfo, uploadFile } from "../data/slices/uploadSlice";
 import { setRutina } from "../data/slices/editorSlice";
 
 export const FileReaderComponent = () => {
@@ -43,8 +43,13 @@ export const FileReaderComponent = () => {
       if (cargarArchivo) {
         const result = { ...rutinaInfo, ...dataFileUploaded };
 
+        //Establecemos el estado de la rutina a enviar con los datos del archivo cargado
         dispatch(setRutina(result));
+
+        //Limpiamos los datos del archivo que se ha subido
+        dispatch(deleteInfo());
       } else {
+        //Establecemos informacion de rutina con la editada en el formulario
         dispatch(setRutina(rutinaInfo));
       }
 
