@@ -15,10 +15,13 @@ const initialState = {
   servicio: "",
   numeroAcciones: 0,
   targetURL: "",
-  id: "",
+  pk_id_rutina: "",
   //Estos son los que se han utilizado antes
   comandos: [],
   comandoIndividual: {},
+  //Verificacion para saber si es un elemento nuevo o en edicion
+  isNew: false,
+  isEdit: false
 };
 
 const editorComponentSlice = createSlice({
@@ -49,7 +52,7 @@ const editorComponentSlice = createSlice({
       state.comandoIndividual = payload;
     },
     //Funcion para eliminar el comando actual en edicion
-    //Se usa en individualView
+    //Se usa en individualView || En editor Config
     deselectComandoIndividual: (state) => {
       state.comandoIndividual = {};
     },
@@ -109,8 +112,23 @@ const editorComponentSlice = createSlice({
         state[llave] = payload[llave];
       });
 
-      state.id = uuid();
+      //Si no existe una ID, entonces crea una nueva; esto solo pasa para las nuevas creaciones
+      if (!payload.id) {
+        state.pk_id_rutina = uuid()
+      }
     },
+    //Cambiar estado a un nuevo elemento
+    //Se encuentra en homeReadOrCreate filereader
+    setTurnNew: (state, {payload}) => {
+      switch (payload) {
+        case 'new':
+          state.isNew = true
+          break
+        case 'edit':
+          state.isEdit = true
+          break
+      }
+    }
   },
 });
 
@@ -128,6 +146,8 @@ export const {
   setInstanceRutina,
   //Funcion para eliminar informacion cuando se hace el envio
   deleteAllEditInfo,
+  //Funcion para cambiar estado de la edicion
+  setTurnNew
 } = editorComponentSlice.actions;
 
 export default editorComponentSlice.reducer;

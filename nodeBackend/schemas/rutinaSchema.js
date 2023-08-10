@@ -1,6 +1,6 @@
 class RutinaSchema {
     constructor(rutina) {
-        this.id = rutina.id
+        this.pk_id_rutina = rutina.pk_id_rutina
         this.titulo = rutina.titulo
         this.servicio = rutina.servicio
         this.numeroAcciones = rutina.numeroAcciones

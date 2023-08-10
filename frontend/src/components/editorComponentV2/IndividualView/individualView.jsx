@@ -4,7 +4,10 @@ import { GeneralOptions } from "./generalOptionsV2/generalOptions";
 import { TypeOptions } from "./specificOptions/typeOptions/typeOptions";
 import { ClickOptions } from "./specificOptions/clickOptions/clickOptions";
 import { useNavigate } from "react-router-dom";
-import { deselectComandoIndividual, saveSelectComanddoIndividual, setComandos } from "../../../data/slices/editorSlice";
+import {
+  saveSelectComanddoIndividual,
+  setComandos,
+} from "../../../data/slices/editorSlice";
 
 export const IndividualView = ({ dataComando }) => {
   const dispatch = useDispatch();
@@ -32,17 +35,14 @@ export const IndividualView = ({ dataComando }) => {
 
   //Cada vez que se confirma la peticion, se realiza el cambio de estado al estado en redux
   useEffect(() => {
-
     //Si el proceso esta iniciado, ejecuta lo siguiente
     if (saveEdit) {
       //Apaga el proceso
       setSaveEdit(false);
       //Guarda los cambios del comando individual en edicion
-      dispatch(saveSelectComanddoIndividual(comandoIndividual))
+      dispatch(saveSelectComanddoIndividual(comandoIndividual));
       //Con los cambios guardados, en redux se realiza la funcion para cambiar el estado de los comandos actuales en edicion
-      dispatch(setComandos())
-      //Eliminamos el comando actual en edicion
-      dispatch(deselectComandoIndividual())
+      dispatch(setComandos());
       //Navegamos a la pagina de listado de los comandos en edicion
       navigate("/list");
       console.log("guardado Todo el elemento");
@@ -70,7 +70,7 @@ export const IndividualView = ({ dataComando }) => {
     if (cancelProps) {
       //Primero verifica cuales son las propiedades por modificar según el tipo de comando actual
       const whatProp = typeCommand ? "propType" : "propClick";
-      //Creamos un objeto que contenga las demas propiedades del comando en edicion, pero modificando la instancia con el 
+      //Creamos un objeto que contenga las demas propiedades del comando en edicion, pero modificando la instancia con el
       const result = {
         ...comandoIndividual,
         [whatProp]: {
@@ -106,7 +106,7 @@ export const IndividualView = ({ dataComando }) => {
 
   //Funciones para cambiar los estados
   const handleSaveEdit = () => {
-    //Inicia el proceso de guardado 
+    //Inicia el proceso de guardado
     setSaveEdit(!saveEdit);
   };
 

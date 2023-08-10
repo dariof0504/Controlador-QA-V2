@@ -22,8 +22,14 @@ export const apiSide = sliceSideReducer.injectEndpoints({
                 method: 'POST',
                 body: {...cred}
             })
+        }),
+        listRutinas: builder.query({
+            query: () => ({
+                url: '/list',
+                method: 'GET'
+            })
         })
-    })
+    })//
 })
 
-export const { useTestQuery, useSideFilterMutation, useSaveRutinaMutation } = apiSide
+export const { useTestQuery, useSideFilterMutation, useSaveRutinaMutation, useListRutinasQuery } = apiSide

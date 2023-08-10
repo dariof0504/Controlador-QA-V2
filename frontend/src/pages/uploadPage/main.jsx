@@ -1,4 +1,4 @@
-import { FileReaderComponent } from '../components/fileReader'
+import { FileReaderComponent } from "../../components/homeReadOrCreate/fileReader"
 
 const Home = () => {
 

@@ -1,9 +1,11 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/main";
 import { Succes } from "./pages/succes";
 import { IndividualCommandView } from "./pages/editorPage/individualCommandView";
 import { ListCommandView } from "./pages/editorPage/listCommandPage";
-import { ListRutinaView } from "./pages/listRutinaView";
+import Home from "./pages/uploadPage/main";
+import { EditorConfig } from "./pages/config/editorConfig";
+import { ListRutinaView } from "./pages/listRutinaPage/listRutinaView";
+import { EstresPage } from "./pages/estresPage/estresPage";
 
 function App() {
   return (
@@ -12,9 +14,12 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/list" element={<ListCommandView />} />
+        <Route element={<EditorConfig />}>
+          <Route path="/list" element={<ListCommandView />} />
+        </Route>
         <Route path="/edit" element={<IndividualCommandView />} />
         <Route path="/rutinas" element={<ListRutinaView />} />
+        <Route path="/estres" element={<EstresPage />} />
         <Route path="/success" element={<Succes />} />
       </Routes>
     </BrowserRouter>

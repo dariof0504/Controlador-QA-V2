@@ -1,4 +1,4 @@
-const { rutina_element } = require("../model/userProfile");
+const { rutina_element } = require("../model/dbQA");
 const { RutinaSchema } = require("../schemas/rutinaSchema");
 
 const saveRutinaController = async (req, res) => {
@@ -8,9 +8,10 @@ const saveRutinaController = async (req, res) => {
 
     const dbResult = await rutina_element.create(result)
 
-    console.log(Object.keys(dbResult))
-    res.json(dbResult.dataValues);
-  } catch (error) {}
+    res.json(dbResult)
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 module.exports = { saveRutinaController };
