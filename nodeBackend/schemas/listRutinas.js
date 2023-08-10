@@ -9,7 +9,7 @@ class ListRutinaSchema {
   constructor(listaRutina) {
     this.lista = listaRutina.map(rutina => new IndividualRutinaSchema(rutina))
   }
-  returnLis() {
+  returnList() {
     return this.lista
   }
 }

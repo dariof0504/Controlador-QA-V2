@@ -113,7 +113,7 @@ const editorComponentSlice = createSlice({
       });
 
       //Si no existe una ID, entonces crea una nueva; esto solo pasa para las nuevas creaciones
-      if (!payload.id) {
+      if (!payload.pk_id_rutina) {
         state.pk_id_rutina = uuid()
       }
     },

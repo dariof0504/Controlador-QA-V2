@@ -10,7 +10,7 @@ const listRutinaController = async (req, res) => {
 
     console.log('SE HA HECHO PETICION')
 
-    res.json(result.returnLis())
+    res.json(result.returnList())
 }
 
 const listIndividualRutinaController = async (req, res ) => {

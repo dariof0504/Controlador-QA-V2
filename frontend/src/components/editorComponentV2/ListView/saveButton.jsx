@@ -1,12 +1,13 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { deleteAllEditInfo } from "../../../data/slices/editorSlice";
-import { useSaveRutinaMutation } from "../../../api/apiSideEndpoints";
+import { useEditRutinaIndividualMutation, useSaveRutinaMutation } from "../../../api/apiSideEndpoints";
 
 export const SaveButton = ({data}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [req, {isLoading}] = useSaveRutinaMutation()
+  const [reqEdit, {isLoading:loadEdit}] = useEditRutinaIndividualMutation() 
 
 	const {isNew, isEdit} = data
 
@@ -21,7 +22,8 @@ export const SaveButton = ({data}) => {
       console.log('peticion hecha')
 
     } else if (isEdit) {
-      console.log("elemento editado");
+      const result = await reqEdit(data)
+      result && console.log(result)
     }
 
     //Cuando se envie, limpiamos los datos

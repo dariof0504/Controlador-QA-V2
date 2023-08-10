@@ -1,8 +1,21 @@
-export const ButtonsTag = ({id}) => {
+import { useDispatch } from "react-redux"
+import { useNavigate } from 'react-router-dom'
+import { useListIndividualRutinaQuery } from "../../api/apiSideEndpoints"
+import { setRutina, setTurnNew } from "../../data/slices/editorSlice"
 
-  const handleEdit = (e) => {
-    e.preventDefault()
-    console.log('Se va a editar esta rutina' + ` ${id}`)
+export const ButtonsTag = ({pk_id_rutina}) => {
+
+  const {data} = useListIndividualRutinaQuery(pk_id_rutina)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+
+  const handleEdit = async () => {
+    const result = await data
+    dispatch(setRutina(result))
+    dispatch(setTurnNew('edit'))
+    navigate('/list')
   }
 
   const handleDelete = () => {
@@ -12,7 +25,7 @@ export const ButtonsTag = ({id}) => {
   return (
     <div>
       <button onClick={handleDelete} >Editar</button>
-      <button onClick={e => handleEdit(e)} >Eliminar</button>
+      <button onClick={handleEdit} >Eliminar</button>
     </div>
   )
 }
