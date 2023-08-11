@@ -1,13 +1,10 @@
 import { FileReaderComponent } from "../../components/homeReadOrCreate/fileReader"
 
-const Home = () => {
-
+export const CreateNewRutina = () => {
   return (
     <div>
-      <h1>Titulo de bienvenida</h1>
+      <h1>Titutlo Bienvenida</h1>
       <FileReaderComponent />
     </div>
   )
 }
-
-export default Home
