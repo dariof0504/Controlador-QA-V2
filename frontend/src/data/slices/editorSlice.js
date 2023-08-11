@@ -20,7 +20,6 @@ const initialState = {
   comandos: [],
   comandoIndividual: {},
   //Verificacion para saber si es un elemento nuevo o en edicion
-  isNew: false,
   isEdit: false
 };
 

@@ -5,6 +5,8 @@ import { CreateNewRutina } from './pages/uploadPage/main'
 import { EditorConfig } from "./pages/config/editorConfig";
 import { ListRutinaView } from "./pages/listRutinaPage/listRutinaView";
 import { SessionPage } from "./pages/sessionCreatePage/sessionPage";
+import { HomePage } from "./pages/Home/homePage";
+import { ListSessionsPage } from "./pages/sessionCreatePage/listSessionPage";
 
 function App() {
   return (
@@ -12,13 +14,15 @@ function App() {
       {/* Para autentificacion o envolver estados */}
 
       <Routes>
-        <Route path="/" element={<CreateNewRutina />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/createRutina" element={<CreateNewRutina />} />
         <Route element={<EditorConfig />}>
-          <Route path="/list" element={<ListCommandView />} />
+          <Route path="/editRutina" element={<ListCommandView />} />
         </Route>
-        <Route path="/edit" element={<IndividualCommandView />} />
-        <Route path="/rutinas" element={<ListRutinaView />} />
-        <Route path="/session" element={<SessionPage />} />
+        <Route path="/editCommand" element={<IndividualCommandView />} />
+        <Route path="/listRutinas" element={<ListRutinaView />} />
+        <Route path="/editSession" element={<SessionPage />} />
+        <Route path="/listSession" element={<ListSessionsPage />} />
       </Routes>
     </BrowserRouter>
   );

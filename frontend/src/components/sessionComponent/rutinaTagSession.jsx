@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { addRutinaSession } from "../../data/slices/sessionSlice";
 import { useState } from "react";
+import uuid from "react-uuid";
 
 export const RutinaTagSession = ({ rutina }) => {
   const dispatch = useDispatch();
@@ -20,7 +21,10 @@ export const RutinaTagSession = ({ rutina }) => {
   };
 
   const handleAddRutina = () => {
-    dispatch(addRutinaSession(rutinaEdit));
+
+    const rutinaResult = {...rutinaEdit, id: uuid()}
+
+    dispatch(addRutinaSession(rutinaResult));
   };
 
   const tipoTestOptions = ["estres", "validacion", "normal"];
@@ -28,9 +32,25 @@ export const RutinaTagSession = ({ rutina }) => {
   return (
     <div>
       <p>{rutina.titulo}</p>
-      <select value={rutinaEdit.tipoTest} className="tipoTest" onChange={(e) => handleRutinaEdit(e)}>
-        {tipoTestOptions.map(test => <option value={test} >{test}</option>)}
+      <select
+        value={rutinaEdit.tipoTest}
+        className="tipoTest"
+        onChange={(e) => handleRutinaEdit(e)}
+      >
+        {tipoTestOptions.map((test) => (
+          <option value={test}>{test}</option>
+        ))}
       </select>
+      {rutinaEdit.tipoTest === "estres" && (
+        <div>
+          <p>Numero de repeticiones</p>
+          <input
+            type="number"
+            className="repeticiones"
+            onChange={(e) => handleRutinaEdit(e)}
+          />
+        </div>
+      )}
       <button onClick={handleAddRutina}>Añadir</button>
     </div>
   );

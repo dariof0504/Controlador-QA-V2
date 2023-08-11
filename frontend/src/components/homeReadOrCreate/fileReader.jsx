@@ -58,7 +58,7 @@ export const FileReaderComponent = () => {
       setSaveRutina(false);
 
       //Cambiamos de ruta
-      navigate("/list");
+      navigate("/editRutina");
     }
   }, [saveRutina]);
 

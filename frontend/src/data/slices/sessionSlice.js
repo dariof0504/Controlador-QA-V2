@@ -4,6 +4,7 @@ const initialState = {
   titulo: "",
   pk_id_session: "",
   rutinasPorEjecutar: [],
+  isEdit: false,
 };
 
 const sessionSlice = createSlice({
@@ -15,23 +16,40 @@ const sessionSlice = createSlice({
 
       state[instance] = value;
     },
+    //Se usa en rutinaTagSession
     addRutinaSession: (state, { payload }) => {
       state.rutinasPorEjecutar =
         state.rutinasPorEjecutar.length > 0
           ? [...state.rutinasPorEjecutar, payload]
           : [payload];
     },
+    //Se usa en listRutinasForSession
     deleteRutinaSession: (state, { payload }) => {
       const newSession = state.rutinasPorEjecutar.filter(
-        (e) => e.pk_id_rutina !== payload
+        (e) => e.id !== payload
       );
 
       state.rutinasPorEjecutar = newSession;
     },
+    setSession: (state, { payload }) => {
+      const llaves = Object.keys(payload);
+      llaves.map((llave) => (state[llave] = payload[llave]));
+
+      state.isEdit = true
+    },
+    deleteAllSessionInfo: (state) => {
+      const llaves = Object.keys(initialState)
+      llaves.map((llave) => state[llave] = initialState[llave])
+    }
   },
 });
 
-export const { setInstanceSession, addRutinaSession, deleteRutinaSession } =
-  sessionSlice.actions;
+export const {
+  setInstanceSession,
+  addRutinaSession,
+  deleteRutinaSession,
+  setSession,
+  deleteAllSessionInfo
+} = sessionSlice.actions;
 
 export default sessionSlice.reducer;

@@ -27,7 +27,7 @@ export const InfoSession = ({ sessionInfo }) => {
   return (
     <div>
       <p>Titulo</p>
-			<p>{sessionInfo.titulo}</p>
+			<p>{sessionInfo.titulo.length > 0 ? sessionInfo.titulo : 'Aun no hay titulo'}</p>
 			<input className="titulo" onChange={e => handleInfoEdit(e)} />
 			<button value={editSessionInfo.titulo} className="titulo" onClick={e => handleSave(e)} >Guardar cambios</button>
     </div>

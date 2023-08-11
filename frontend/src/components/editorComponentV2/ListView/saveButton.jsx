@@ -26,11 +26,11 @@ export const SaveButton = ({data}) => {
       result && console.log(result)
     }
 
-    //Cuando se envie, limpiamos los datos
-    dispatch(deleteAllEditInfo());
+    // //Cuando se envie, limpiamos los datos
+    // dispatch(deleteAllEditInfo());
 
     //Realizamos la navegacion
-    navigate("/rutinas");
+    navigate("/listRutinas");
   };
 
   return <button onClick={handleSaveEdit} >Guardar cambios</button>;

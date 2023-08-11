@@ -42,6 +42,33 @@ export const apiSide = sliceSideReducer.injectEndpoints({
         body: { ...rutina },
       }),
     }),
+    //Apis para sesiones
+    listSessions: builder.query({
+      query: () => ({
+        url: '/listSession',
+        method: 'GET'
+      })
+    }),
+    listIndividualSession: builder.query({
+      query: (pk_id_session) => ({
+        url: `/session/${pk_id_session}`,
+        method: 'GET'
+      })
+    }),
+    createSession: builder.mutation({
+      query: (session) => ({
+        url: 'createSession',
+        body: {...session},
+        method: 'POST',
+      })
+    }),
+    editSession: builder.mutation({
+      query: (session) => ({
+        url: 'editSession',
+        body: {...session},
+        method: 'PUT'
+      })
+    })
   }),
 });
 
@@ -52,4 +79,9 @@ export const {
   useListRutinasQuery,
   useListIndividualRutinaQuery,
   useEditRutinaIndividualMutation,
+  //APIS SESIONES
+  useListSessionsQuery,
+  useListIndividualSessionQuery,
+  useCreateSessionMutation,
+  useEditSessionMutation
 } = apiSide;

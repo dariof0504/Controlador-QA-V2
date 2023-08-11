@@ -12,7 +12,7 @@ export const CommandTag = ({comando}) => {
 
   const handleSelectComandoIndividual = () => {
     dispatch(selectComandoIndividual(index))
-    navigate('/edit')
+    navigate('/editCommand')
   }
 
   const handleDeleteComando = () => {
