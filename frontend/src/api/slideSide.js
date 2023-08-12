@@ -6,5 +6,6 @@ export const sliceSideReducer = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: mainUrl
     }),
-    endpoints: () => ({})
+    endpoints: () => ({}),
+    refetchOnMountOrArgChange: true
 })

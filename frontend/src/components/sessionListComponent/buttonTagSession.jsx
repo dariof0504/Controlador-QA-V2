@@ -17,10 +17,12 @@ export const ButtonTagSession = ({ pk_id_session }) => {
     navigate('/editSession')
   }
 
+  
 
   return (
     <div>
       <button onClick={handleEdit} >Editar</button>
+      <button>Ejecutar</button>
       <button>Eliminar</button>
     </div>
   );

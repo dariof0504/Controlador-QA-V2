@@ -15,7 +15,7 @@ export const ButtonsTag = ({pk_id_rutina}) => {
     const result = await data
     dispatch(setRutina(result))
     dispatch(setTurnNew('edit'))
-    navigate('/list')
+    navigate('/editRutina')
   }
 
   const handleDelete = () => {
@@ -24,8 +24,8 @@ export const ButtonsTag = ({pk_id_rutina}) => {
 
   return (
     <div>
-      <button onClick={handleDelete} >Editar</button>
-      <button onClick={handleEdit} >Eliminar</button>
+      <button onClick={handleEdit} >Editar</button>
+      <button onClick={handleDelete} >Eliminar</button>
     </div>
   )
 }
