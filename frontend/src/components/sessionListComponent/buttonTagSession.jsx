@@ -1,13 +1,13 @@
-import React from "react";
-import { useExecuteSessionMutation, useListIndividualSessionQuery } from "../../api/apiSideEndpoints";
+import { useListIndividualSessionQuery } from "../../api/apiSideEndpoints";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setIsEditSession, setSession } from "../../data/slices/sessionSlice";
+import { setExecuterSession } from "../../data/slices/executeSlice";
 
 export const ButtonTagSession = ({ pk_id_session }) => {
 
   const { data } = useListIndividualSessionQuery(pk_id_session)
-  const [reqExecute, {status}] = useExecuteSessionMutation()
+
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -20,10 +20,9 @@ export const ButtonTagSession = ({ pk_id_session }) => {
   }
 
   const handleExecute = async () => {
-    const result = await reqExecute(pk_id_session)
-
-    result && console.log(result)
-    // result && navigate('/execute')
+    const result = await data
+    dispatch(setExecuterSession(result))
+    navigate('/execute')
   }
   
 

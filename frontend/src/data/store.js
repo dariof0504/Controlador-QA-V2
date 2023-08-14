@@ -4,6 +4,7 @@ import editorComponentReducer from './slices/editorSlice'
 import uploadReducer from './slices/uploadSlice'
 import sessionReducer from './slices/sessionSlice'
 import estresReducer from './slices/estresSlice'
+import executeReducer from './slices/executeSlice'
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         uploadReducer: uploadReducer,
         sessionReducer : sessionReducer,
         estresReducer: estresReducer,
+        executeReducer: executeReducer
 
     },
     middleware: (getDefaultMiddleware) =>

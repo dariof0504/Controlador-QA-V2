@@ -1,6 +1,7 @@
 const { session_element, rutina_element } = require("../model/dbQA.js");
 const { estresGenerator } = require("../utils/estresScript.js");
 const { ExecuteSchema } = require("../schemas/executeSchema.js");
+const axios = require('axios')
 
 const executeController = async (req, res) => {
   const { body } = req;
@@ -36,6 +37,22 @@ const executeController = async (req, res) => {
   }
 
   const finalElement = { targetURL, servicio, comandos: rutinaAcumulada };
+
+  try {
+    // const pythonRequest = await axios({
+    //   method: 'POST',
+    //   url: 'http://localhost:7000/executeSelenium',
+    //   body: finalElement
+    // })
+
+    const py = await axios.post('http://127.0.0.1:7000/executeSelenium', finalElement)
+  
+    console.log(py.data)
+
+    // console.log(pythonRequest)
+  } catch (error) {
+    console.log(error)
+  }
 
   res.json(new ExecuteSchema(finalElement));
 };
