@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { uploadFile } from "../../data/slices/uploadSlice";
-import { setRutina, setTurnNew } from "../../data/slices/editorSlice";
+import { setIsEditRutina, setRutina } from "../../data/slices/editorSlice";
+import { HomeLayer } from "../layer/homeLayer";
 
 export const FileReaderComponent = () => {
   const [data, { status }] = useSideFilterMutation();
@@ -51,11 +52,11 @@ export const FileReaderComponent = () => {
         dispatch(setRutina(rutinaInfo));
       }
 
-      //Declaramos que el archivo es nuevo
-      dispatch(setTurnNew('new'))
-
       //Apagamos el proceso
       setSaveRutina(false);
+
+      //Declaramos que es un nuevo componente
+      dispatch(setIsEditRutina(false))
 
       //Cambiamos de ruta
       navigate("/editRutina");
@@ -101,6 +102,7 @@ export const FileReaderComponent = () => {
 
   return (
     <form>
+      <HomeLayer />
       <h1>Inserte aca el archivo por leer</h1>
       <p>Titulo</p>
       <input className="titulo" onChange={(e) => handleRutinaInfo(e)}></input>

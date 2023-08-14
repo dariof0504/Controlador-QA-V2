@@ -5,6 +5,8 @@ const editRutinaController = async (req, res) => {
 
     const {body} = req
 
+    console.log(body)
+
     const editElement = new RutinaSchema(body)
 
     const { pk_id_rutina } = editElement

@@ -31,6 +31,12 @@ const session_element = sqlDB.define("tb_session", {
   titulo: {
     type: DataTypes.STRING,
   },
+  targetURL: {
+    type: DataTypes.STRING
+  },
+  servicio: {
+    type: DataTypes.STRING
+  },
   rutinasPorEjecutar: {
     type: DataTypes.ARRAY(DataTypes.JSON),
   },

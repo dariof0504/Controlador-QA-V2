@@ -3,6 +3,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 const initialState = {
   titulo: "",
   pk_id_session: "",
+  targetURL: "",
   rutinasPorEjecutar: [],
   isEdit: false,
 };
@@ -34,8 +35,9 @@ const sessionSlice = createSlice({
     setSession: (state, { payload }) => {
       const llaves = Object.keys(payload);
       llaves.map((llave) => (state[llave] = payload[llave]));
-
-      state.isEdit = true
+    },
+    setIsEditSession: (state, {payload}) => {
+      state.isEdit = payload
     },
     deleteAllSessionInfo: (state) => {
       const llaves = Object.keys(initialState)
@@ -49,6 +51,7 @@ export const {
   addRutinaSession,
   deleteRutinaSession,
   setSession,
+  setIsEditSession,
   deleteAllSessionInfo
 } = sessionSlice.actions;
 

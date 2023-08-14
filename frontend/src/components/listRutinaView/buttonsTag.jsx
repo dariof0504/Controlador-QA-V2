@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { useNavigate } from 'react-router-dom'
 import { useListIndividualRutinaQuery } from "../../api/apiSideEndpoints"
-import { setRutina, setTurnNew } from "../../data/slices/editorSlice"
+import { setIsEditRutina, setRutina } from "../../data/slices/editorSlice"
 
 export const ButtonsTag = ({pk_id_rutina}) => {
 
@@ -14,7 +14,7 @@ export const ButtonsTag = ({pk_id_rutina}) => {
   const handleEdit = async () => {
     const result = await data
     dispatch(setRutina(result))
-    dispatch(setTurnNew('edit'))
+    dispatch(setIsEditRutina(true))
     navigate('/editRutina')
   }
 

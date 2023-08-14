@@ -1,8 +1,10 @@
+import { HomeLayer } from "../layer/homeLayer";
 import { ButtonsTag } from "./buttonsTag";
 
 export const ListRutinasMain = ({ data }) => {
   return (
     <div>
+      <HomeLayer />
       <h1>Listado de rutinas creadas</h1>
       {data.map((dat) => (
         <div>

@@ -68,6 +68,13 @@ export const apiSide = sliceSideReducer.injectEndpoints({
         body: {...session},
         method: 'PUT'
       })
+    }),
+    executeSession: builder.mutation({
+      query: (pk_id_session) => ({
+        url: 'execute',
+        method: 'POST',
+        body: {pk_id_session}
+      })       
     })
   }),
 });
@@ -83,5 +90,7 @@ export const {
   useListSessionsQuery,
   useListIndividualSessionQuery,
   useCreateSessionMutation,
-  useEditSessionMutation
+  useEditSessionMutation,
+  //Execute
+  useExecuteSessionMutation
 } = apiSide;

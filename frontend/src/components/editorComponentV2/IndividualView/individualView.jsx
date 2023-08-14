@@ -44,7 +44,7 @@ export const IndividualView = ({ dataComando }) => {
       //Con los cambios guardados, en redux se realiza la funcion para cambiar el estado de los comandos actuales en edicion
       dispatch(setComandos());
       //Navegamos a la pagina de listado de los comandos en edicion
-      navigate("/list");
+      navigate("/editRutina");
       console.log("guardado Todo el elemento");
     }
   }, [saveEdit]);

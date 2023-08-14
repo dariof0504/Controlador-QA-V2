@@ -8,6 +8,8 @@ const sessionCreateController = async (req, res) => {
 
     const result = await session_element.create(session)
 
+    console.log(result)
+
     result && res.json('Creado con exito')
 }
 
