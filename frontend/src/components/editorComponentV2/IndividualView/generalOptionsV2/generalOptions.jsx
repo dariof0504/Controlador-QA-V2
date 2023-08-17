@@ -8,7 +8,7 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
 
   //Valor de las opciones para los inputs
   const optionsValues = {
-    typeLocation: ["xpath", "css"],
+    typeLocation: ["xpath", "css", "id", "classname"],
     command: ["click", "type"],
   };
 

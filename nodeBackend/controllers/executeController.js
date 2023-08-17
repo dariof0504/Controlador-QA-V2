@@ -39,17 +39,18 @@ const executeController = async (req, res) => {
   const finalElement = { targetURL, servicio, comandos: rutinaAcumulada };
 
   try {
-    // const pythonRequest = await axios({
-    //   method: 'POST',
-    //   url: 'http://localhost:7000/executeSelenium',
-    //   body: finalElement
-    // })
 
-    const py = await axios.post('http://127.0.0.1:7000/executeSelenium', finalElement)
-  
-    console.log(py.data)
+    let request
 
-    // console.log(pythonRequest)
+    switch(servicio) {
+      case 'appium':
+        request = await axios.post('http://127.0.0.1:7000/executeAppium', finalElement)
+        break
+      case 'selenium':
+        request = await axios.post('http://127.0.0.1:7000/executeSelenium', finalElement)
+        break
+    }
+
   } catch (error) {
     console.log(error)
   }

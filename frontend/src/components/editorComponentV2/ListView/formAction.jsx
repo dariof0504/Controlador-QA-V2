@@ -64,7 +64,7 @@ export const FormAction = ({ data }) => {
       <p>Seleccionar el tipo de comando</p>
       <select className="command" onChange={(e) => handleValue(e)}>
         <option value="click">Click</option>
-        <option value="string">String</option>
+        <option value="type">Type</option>
       </select>
       <p>Cual es la ubicacion del elemento</p>
       <input
@@ -77,6 +77,8 @@ export const FormAction = ({ data }) => {
       <select className="typeLocation" onChange={(e) => handleValue(e)}>
         <option value="xpath">XPATH</option>
         <option value="css">CSS Selector</option>
+        <option value="id">ID Accesibility</option>
+        <option value="classname">ClassName</option>
       </select>      
       <button type="submit">Añadir accion</button>
     </form>

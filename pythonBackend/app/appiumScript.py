@@ -1,31 +1,28 @@
-from typing import List, Union
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.options import BaseOptions
-from selenium.webdriver.support.wait import WebDriverWait
+from appium import webdriver
+from appium.webdriver.common.appiumby import AppiumBy
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException, InvalidSessionIdException
-import copy
-import uuid
-import json
 
-class Navigator(webdriver.Remote, By):
+class NavigatorAppium(webdriver.Remote, AppiumBy):
 
-    def __init__(self, command_executor="http://127.0.0.1:4444", keep_alive=True, file_detector=None, options: BaseOptions | List[BaseOptions] = None) -> None:
-        super().__init__(command_executor, keep_alive, file_detector, options)
-
-    def initialArguments(self, url:str, comandos:list):
-
-        self.targetURL:str = url
+    def initialArguments(self, comandos:list):
         self.comandos:list = comandos
 
+    def selectElementByClassName(self, location:str):
+        WebDriverWait(driver=self, timeout=60).until(EC.presence_of_element_located((self.CLASS_NAME, location)))
+        self.element = self.find_element(by=self.CLASS_NAME, value=location)
+
+    def selectElementByID(self, location:str):
+        WebDriverWait(driver=self, timeout=60).until(EC.presence_of_element_located((self.ACCESSIBILITY_ID, location)))
+        self.element = self.find_element(by=self.ACCESSIBILITY_ID, value=location)
+
     def selectElementByXPATH(self, location:str):
-        WebDriverWait(driver=self, timeout=30).until(EC.presence_of_element_located((self.XPATH, location)))
+        WebDriverWait(driver=self, timeout=60).until(EC.presence_of_element_located((self.XPATH, location)))
         self.element = self.find_element(by=self.XPATH, 
         value=location)
 
     def selectElementByCssSelector(self, location:str):
-        WebDriverWait(driver=self, timeout=30).until(EC.presence_of_element_located((self.CSS_SELECTOR, location))) 
+        WebDriverWait(driver=self, timeout=60).until(EC.presence_of_element_located((self.CSS_SELECTOR, location))) 
         self.element = self.find_element(by=self.CSS_SELECTOR, 
         value=location)
 
@@ -35,21 +32,20 @@ class Navigator(webdriver.Remote, By):
                 self.selectElementByCssSelector(location)
             case 'xpath':
                 self.selectElementByXPATH(location)
-
-    def initSession(self):
-        
-        self.get(self.targetURL)
-        self.set_window_size(1500,1000)
+            case 'id':
+                self.selectElementByID(location)
+            case 'classname':
+                self.selectElementByClassName(location)
 
     def typeElement(self, content:str):
+        self.clickElement()
         self.element.send_keys(content)
+        self.hide_keyboard()
 
     def clickElement(self):
         self.element.click()
 
     def executeDefaultRoutine(self):
-        self.initSession()
-
         commands = self.comandos
 
         for c in commands:
@@ -57,7 +53,7 @@ class Navigator(webdriver.Remote, By):
             #Datos de comando
             command = c["command"]
             #Datos de ubicacion
-            location = str(c["location"])   
+            location = c["location"]      
             typeLocation = c["typeLocation"]
             #Datos de indice
             index = c["index"]
@@ -65,7 +61,8 @@ class Navigator(webdriver.Remote, By):
             value = c["value"]
 
             print(index)
-
+            print(typeLocation)
+            print(location)
 
             self.filterSelector(typeLocation,location)
 

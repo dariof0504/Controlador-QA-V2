@@ -16,7 +16,7 @@ const estresGenerator = (comandos) => {
 
       const { unico, longitudIndefinida, longitud } = propType;
 
-      const longitudEstablecida = longitudIndefinida ? 256 : longitud;
+      const longitudEstablecida = longitudIndefinida ? 20 : longitud;
 
       if (unico) {
         valor =
