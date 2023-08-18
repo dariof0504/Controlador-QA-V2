@@ -11,7 +11,7 @@ export const TypeOptions = ({ data, specFunctions }) => {
   const valAdvertencias = comandoIndividual.propType.tieneAdvertencias
 
   return (
-    <div>
+    <div className="typeOptions" >
       
       <BooleanInputs data={data} specFunctions={specFunctions} />
       {valAdvertencias && <AdvertenciasModule data={data} specFunctions={specFunctions} />}

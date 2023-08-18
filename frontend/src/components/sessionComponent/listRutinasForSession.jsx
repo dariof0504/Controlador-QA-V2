@@ -11,8 +11,7 @@ export const ListRutinasForSession = ({ sessionInfo }) => {
   }
 
   return (
-    <div>
-      <p>Rutinas actuales</p>
+    <div className="list">
       {rutinasPorEjecutar.map((rutina) => (
         <div>
           <p>{rutina.titulo}</p>

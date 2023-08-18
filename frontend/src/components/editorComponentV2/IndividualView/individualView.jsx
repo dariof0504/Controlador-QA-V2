@@ -8,6 +8,7 @@ import {
   saveSelectComanddoIndividual,
   setComandos,
 } from "../../../data/slices/editorSlice";
+import './style.css'
 
 export const IndividualView = ({ dataComando }) => {
   const dispatch = useDispatch();
@@ -163,7 +164,7 @@ export const IndividualView = ({ dataComando }) => {
   const specFunctions = { handleCancelSpec, handleClickProps, handleTypeProps };
 
   return (
-    <div>
+    <div className="individualView" >
       <button onClick={() => setOptionView(!optionView)}>
         {optionView ? "Generales" : "Especificos"}
       </button>

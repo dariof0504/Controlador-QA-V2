@@ -16,17 +16,18 @@ export const BooleanInputs = ({ specFunctions, data }) => {
   const llaves = ["obligatorio", "unico", "longitudIndefinida", "tieneAdvertencias"];
 
   return (
-    <div>
+    <div className="booleanDiv" >
       {llaves.map((llave) => (
-        <>
-          <p>{llave}</p>
+        <div>
+          <label for={llave} >{llave}</label>
           <input
+            id={llave}
             type="checkbox"
             checked={propType[llave]}
             className={llave}
             onChange={(e) => handleChangeInput(e)}
           />
-        </>
+        </div>
       ))}
       <hr></hr>
     </div>

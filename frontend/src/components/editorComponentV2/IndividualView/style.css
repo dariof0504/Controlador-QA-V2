@@ -1,0 +1,93 @@
+.individualView {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: #fff;
+}
+
+.divGeneralOptions {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.generalOptions,
+.selectGeneralOptions {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 800px;
+  text-align: start;
+}
+
+.typeOptions {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 800px;
+  text-align: start;
+}
+
+.typeOptions > .booleanDiv,
+.typeOptions > .divAdvertencias,
+.typeOptions > .listAdvertencias,
+.typeOptions > .longitud {
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 700px;
+  text-align: start;
+  min-height: 10px;
+}
+
+.booleanDiv > div {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  border: black;
+}
+
+.listAdvertencias {
+    flex-wrap: wrap;
+}
+
+.listAdvertencias > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    border: 1px black;
+    background-color: grey;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: justify;
+}

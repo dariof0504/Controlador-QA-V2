@@ -23,7 +23,7 @@ export const ButtonsTag = ({pk_id_rutina}) => {
   }
 
   return (
-    <div>
+    <div className="listBotones" >
       <button onClick={handleEdit} >Editar</button>
       <button onClick={handleDelete} >Eliminar</button>
     </div>

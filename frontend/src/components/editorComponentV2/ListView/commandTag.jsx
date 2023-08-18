@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { deleteComandos, selectComandoIndividual } from "../../../data/slices/editorSlice";
 import { useNavigate } from "react-router-dom";
 import uuid from 'react-uuid'
-
+import './style.css'
 export const CommandTag = ({comando}) => {
 
   const { index, titulo, command } = comando
@@ -21,10 +21,10 @@ export const CommandTag = ({comando}) => {
   }
 
   return (
-    <div key={uuid()} >
+    <div key={uuid()} className="commandTag" >
       <p>{titulo ? titulo : 'No tiene titulo'}</p>
-      <p>Tipo de accion {command}</p>
-      <p>Accion numero {index}</p>
+      <p>{command.toUpperCase()}</p>
+      <p># {index}</p>
       <button onClick={() => handleSelectComandoIndividual()} >Editar</button>
       <button onClick={() => handleDeleteComando()} >Eliminar</button>
     </div>

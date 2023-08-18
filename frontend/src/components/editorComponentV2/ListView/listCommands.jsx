@@ -4,6 +4,7 @@ import { FormAction } from "./formAction";
 import { useDispatch } from "react-redux";
 import { setInstanceRutina } from "../../../data/slices/editorSlice";
 import { SaveButton } from "./saveButton";
+import "./style.css";
 
 export const ListCommands = ({ data }) => {
   const [validador, setValidador] = useState(false);
@@ -33,46 +34,50 @@ export const ListCommands = ({ data }) => {
   };
 
   return (
-    <div>
-      <p>Tipo de servicio</p>
-      <select
-        value={data.servicio}
-        className="servicio"
-        onChange={(e) => handleEdit(e)}
-      >
-        <option value="SELENIUM">SELENIUM</option>
-        <option value="APPIUM">APPIUM</option>
-      </select>
+    <div className="listCommands" style={{ width: "800px" }}>
+      <div className="generalFields" >
+        <p>Tipo de servicio</p>
+        <select
+          value={data.servicio}
+          className="servicio"
+          onChange={(e) => handleEdit(e)}
+        >
+          <option value="SELENIUM">SELENIUM</option>
+          <option value="APPIUM">APPIUM</option>
+        </select>
 
-      {typeFieldKeys.map((field) => (
-        <>
-          <p>{field}</p>
-          <p>{data[field]}</p>
-          <input
-            type="text"
-            className={field}
-            onChange={(e) =>
-              setFieldValues({ ...fieldValues, [field]: e.target.value })
-            }
-          />
-          <button
-            value={fieldValues[field]}
-            className={field}
-            onClick={(e) => handleEdit(e)}
-          >
-            Guardar cambios
-          </button>
-        </>
-      ))}
+        {typeFieldKeys.map((field) => (
+          <>
+            <p>{field}</p>
+            <p>{data[field]}</p>
+            <input
+              type="text"
+              className={field}
+              onChange={(e) =>
+                setFieldValues({ ...fieldValues, [field]: e.target.value })
+              }
+            />
+            <button
+              value={fieldValues[field]}
+              className={field}
+              onClick={(e) => handleEdit(e)}
+            >
+              Guardar cambios
+            </button>
+          </>
+        ))}
+      </div>
       <hr></hr>
-      <p>Añadir acciones</p>
       <FormAction data={comandos} />
       <hr></hr>
-      {validador ? (
-        comandos.map((comando) => <CommandTag comando={comando} />)
-      ) : (
-        <p>Aun no hay comandos</p>
-      )}
+      <div>
+        {validador ? (
+          comandos.map((comando) => <CommandTag comando={comando} />)
+        ) : (
+          <p>Aun no hay comandos</p>
+        )}
+      </div>
+      <hr></hr>
       <SaveButton data={data} />
     </div>
   );

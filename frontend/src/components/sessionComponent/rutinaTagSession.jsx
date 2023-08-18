@@ -30,7 +30,7 @@ export const RutinaTagSession = ({ rutina }) => {
   const tipoTestOptions = ["estres", "validacion", "normal"];
 
   return (
-    <div>
+    <div className="rutinaTag" >
       <p>{rutina.titulo}</p>
       <select
         value={rutinaEdit.tipoTest}

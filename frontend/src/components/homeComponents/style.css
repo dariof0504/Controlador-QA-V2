@@ -1,0 +1,38 @@
+.homeDiv {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: #fff;
+  flex-direction: column;
+  width: auto;
+}
+
+.homeDiv > .rutinas {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    background-color: #aeeec6;
+    width: auto;
+    align-items: center;
+}
+
+.homeDiv>.sesiones {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    background-color: #aeeec6;
+    width: auto;
+    align-items: center;
+}

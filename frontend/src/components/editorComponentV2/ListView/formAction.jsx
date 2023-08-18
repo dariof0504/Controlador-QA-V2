@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 import { addComandos } from "../../../data/slices/editorSlice";
-
+import "./style.css";
 export const FormAction = ({ data }) => {
   const comandos = data;
 
-  const lastIndex = comandos ? comandos.length : 0
-  
-  const dispatch = useDispatch()
+  const lastIndex = comandos ? comandos.length : 0;
+
+  const dispatch = useDispatch();
 
   const comandoInicial = {
     command: "click",
     location: "",
     typeLocation: "xpath",
-    value: ""
+    value: "",
   };
 
   const [nuevoComando, setNuevoComando] = useState(comandoInicial);
@@ -40,13 +40,13 @@ export const FormAction = ({ data }) => {
 
     const comando = { ...nuevoComando, index: lastIndex };
 
-    console.log(comando)
-    dispatch(addComandos(comando))
-
+    console.log(comando);
+    dispatch(addComandos(comando));
   };
 
   return (
-    <form onSubmit={(e) => handleAddAction(e)}>
+    <form onSubmit={(e) => handleAddAction(e)} className="formAction">
+      <p>Añadir acciones</p>
       <p>Titulo de la accion</p>
       <input
         required
@@ -79,7 +79,7 @@ export const FormAction = ({ data }) => {
         <option value="css">CSS Selector</option>
         <option value="id">ID Accesibility</option>
         <option value="classname">ClassName</option>
-      </select>      
+      </select>
       <button type="submit">Añadir accion</button>
     </form>
   );

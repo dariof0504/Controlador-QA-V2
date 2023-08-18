@@ -6,6 +6,8 @@ import { uploadFile } from "../../data/slices/uploadSlice";
 import { setIsEditRutina, setRutina } from "../../data/slices/editorSlice";
 import { HomeLayer } from "../layer/homeLayer";
 
+import "./style.css";
+
 export const FileReaderComponent = () => {
   const [data, { status }] = useSideFilterMutation();
   const [file, setFile] = useState("");
@@ -46,7 +48,6 @@ export const FileReaderComponent = () => {
 
         //Establecemos el estado de la rutina a enviar con los datos del archivo cargado
         dispatch(setRutina(result));
-
       } else {
         //Establecemos informacion de rutina con la editada en el formulario
         dispatch(setRutina(rutinaInfo));
@@ -56,7 +57,7 @@ export const FileReaderComponent = () => {
       setSaveRutina(false);
 
       //Declaramos que es un nuevo componente
-      dispatch(setIsEditRutina(false))
+      dispatch(setIsEditRutina(false));
 
       //Cambiamos de ruta
       navigate("/editRutina");
@@ -101,35 +102,38 @@ export const FileReaderComponent = () => {
   };
 
   return (
-    <form>
+    <form className="fileReader">
       <HomeLayer />
-      <h1>Inserte aca el archivo por leer</h1>
-      <p>Titulo</p>
-      <input className="titulo" onChange={(e) => handleRutinaInfo(e)}></input>
-      <p>Cargar comandos</p>
-      <input
-        type="checkbox"
-        value={cargarArchivo}
-        onChange={() => setCargarArchivo(!cargarArchivo)}
-      />
-
-      <p>Servicio</p>
+      <div className="firstCard" >
+        <p>Escriba el titulo de la rutina</p>
+        <input className="titulo" onChange={(e) => handleRutinaInfo(e)}></input>
+        <div className="inputCheckbox">
+          <label for="cargar">Cargar comandos</label>
+          <input
+            id="cargar"
+            type="checkbox"
+            value={cargarArchivo}
+            onChange={() => setCargarArchivo(!cargarArchivo)}
+          />
+        </div>
+      </div>
       {cargarArchivo ? (
-        <div>
+        <div className="fileUpload">
           <p>Servicio actual es Selenium</p>
           <p>Esta opcion solo esta disponible para Selenium</p>
           <p>Ingrese los comandos</p>
           <input
+            className="fileInput"
             type="file"
             onChange={(e) => handleJsonReader(e)}
             accept=".side"
           />
           {loadFile && (
-            <button onClick={(e) => sendData(e)}>Enviar datos</button>
+            <button onClick={(e) => sendData(e)}>Crear nueva rutina</button>
           )}
         </div>
       ) : (
-        <div>
+        <div className="sinCargar" >
           <p>URL Objetivo</p>
           <input className="targetURL" onChange={(e) => handleRutinaInfo(e)} />
           <p>Servicio en el que se ejecuta</p>

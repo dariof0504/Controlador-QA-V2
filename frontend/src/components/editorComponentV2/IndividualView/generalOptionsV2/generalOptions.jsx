@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 export const GeneralOptions = ({ data, generalFunctions }) => {
   //Desestructuramos las propiedades
   const [comandoIndividual] = data;
-  const [handleComandoIndividualGeneral, handleCancel] =
-    generalFunctions;
+  const [handleComandoIndividualGeneral, handleCancel] = generalFunctions;
 
   //Valor de las opciones para los inputs
   const optionsValues = {
@@ -16,7 +15,7 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
   const fieldValues = {
     value: "",
     location: "",
-    titulo: ''
+    titulo: "",
   };
 
   //Establecemos un estado para los apartados
@@ -44,12 +43,14 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
   }, [comandoIndividual]);
 
   return (
-    <div>
+    <div className="divGeneralOptions">
       {fieldKeys.map((text) => (
-        <>
-          <p>Instancia tipo {text}</p>
-          {/* Llamamos al valor actual en edicion */}
-          <p>Valor {comandoIndividual[text]}</p>
+        <div className="generalOptions">
+          <div>
+            <p>Instancia tipo {text}</p>
+            {/* Llamamos al valor actual en edicion */}
+            <p>Valor {comandoIndividual[text]}</p>
+          </div>
           <input
             value={field[text]}
             className={text}
@@ -66,31 +67,32 @@ export const GeneralOptions = ({ data, generalFunctions }) => {
           </button>
           {/* Si queremos cancelar los cambios seleccionamos este boton */}
           <button onClick={() => handleCancel(text)}>Cancelar cambios</button>
-        </>
+        </div>
       ))}
 
       {optionKeys.map((optional) => (
-        <>
-          <p>Instancia tipo {optional}</p>
-          {/* Llama al valor actual del comando en edicion */}
-          <p>Valor {comandoIndividual[optional]}</p>
-          {/* Segun las opciones cambien, hará el cambio directo al comando */}
+        <div className="selectGeneralOptions">
+          <div>
+            <p>{optional.toUpperCase()}</p>
+            {/* Llama al valor actual del comando en edicion */}
+            <p>{comandoIndividual[optional].toUpperCase()}</p>
+            {/* Segun las opciones cambien, hará el cambio directo al comando */}
+          </div>
           <select
             className={optional}
             value={comandoIndividual[optional]}
             onChange={(e) => handleComandoIndividualGeneral(e)}
           >
             {optionsValues[optional].map((o) => (
-              <option value={o}>{o}</option>
+              <option value={o}>{o.toUpperCase()}</option>
             ))}
           </select>
           {/* En caso querramos volver al valor anterior, usamos este boton */}
           <button onClick={() => handleCancel(optional)}>
             Cancelar cambios
           </button>
-        </>
+        </div>
       ))}
-      
     </div>
   );
 };

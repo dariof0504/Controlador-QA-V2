@@ -3,7 +3,6 @@ import { FileReaderComponent } from "../../components/homeReadOrCreate/fileReade
 export const CreateNewRutina = () => {
   return (
     <div>
-      <h1>Titutlo Bienvenida</h1>
       <FileReaderComponent />
     </div>
   )

@@ -1,0 +1,62 @@
+.sessionEditor {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    background-color: #fff;
+    flex-direction: column;
+    width: auto;
+}
+
+.sessionEditor > .infoSession,
+.sessionEditor > .list,
+.sessionEditor > .listRutinasSession {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 700px;
+    text-align: start;
+    min-height: 10px;
+}
+
+.sessionEditor > .checkRutinas {
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    text-align: start;
+    min-height: 10px;
+}
+
+.list > div,
+.infoSession > div,
+.rutinaTag {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    text-align: start;
+    min-height: 10px;
+}

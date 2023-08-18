@@ -37,33 +37,37 @@ export const AdvertenciasModule = ({ specFunctions, data }) => {
   //Funcion para cancelar los cambios
   const editCancel = (llave) => {
     handleCancelSpec(llave);
-    setListaAdvertencias(advertencias)
+    setListaAdvertencias(advertencias);
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        onChange={(e) => setAdvertenciaField(e.target.value)}
-      ></input>
-      <button onClick={() => addAdvertencia()}>Añadir advertencia</button>
-      {listaAdvertencias.map((advertencia) => (
-        <div>
-          <p>{advertencia.value}</p>
-          <button onClick={() => deleteAdvertencia(advertencia.id)}>
-            Eliminar advertencia
-          </button>
-        </div>
-      ))}
-      <button
-        className="advertencias"
-        onClick={() => handleTypeProps("advertencias", listaAdvertencias)}
-      >
-        Establece advertencias
-      </button>
-      <button onClick={() => editCancel("advertencias")}>
-        Cancelar cambios
-      </button>
-    </div>
+    <>
+      <div className="divAdvertencias">
+        <input
+          type="text"
+          onChange={(e) => setAdvertenciaField(e.target.value)}
+        ></input>
+        <button onClick={() => addAdvertencia()}>Añadir advertencia</button>
+        <button
+          className="advertencias"
+          onClick={() => handleTypeProps("advertencias", listaAdvertencias)}
+        >
+          Establece advertencias
+        </button>
+        <button onClick={() => editCancel("advertencias")}>
+          Cancelar cambios
+        </button>
+      </div>
+      <div className="listAdvertencias">
+        {listaAdvertencias.map((advertencia) => (
+          <div>
+            <p>{advertencia.value}</p>
+            <button onClick={() => deleteAdvertencia(advertencia.id)}>
+              Eliminar advertencia
+            </button>
+          </div>
+        ))}
+      </div>
+    </>
   );
 };

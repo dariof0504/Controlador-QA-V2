@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setInstanceSession } from "../../data/slices/sessionSlice";
+import "./style.css";
 
 export const InfoSession = ({ sessionInfo }) => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ export const InfoSession = ({ sessionInfo }) => {
   };
 
   return (
-    <div>
+    <div className="infoSession">
       {generalFields.map((field) => (
         <div>
           <p>{field.toUpperCase()}</p>
@@ -45,11 +46,17 @@ export const InfoSession = ({ sessionInfo }) => {
           </button>
         </div>
       ))}
-      <p>Selecciona el servicio donde se ejecuta</p>
-      <select defaultValue='selenium' className="servicio" onChange={(e) => handleSave(e)}>
-        <option value="selenium">Selenium</option>
-        <option value="appium">Appium</option>
-      </select>
+      <div>
+        <p>Selecciona el servicio donde se ejecuta</p>
+        <select
+          defaultValue="selenium"
+          className="servicio"
+          onChange={(e) => handleSave(e)}
+        >
+          <option value="selenium">Selenium</option>
+          <option value="appium">Appium</option>
+        </select>
+      </div>
     </div>
   );
 };

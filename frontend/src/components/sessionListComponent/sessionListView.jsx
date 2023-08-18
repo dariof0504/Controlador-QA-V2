@@ -1,10 +1,11 @@
 import { HomeLayer } from "../layer/homeLayer";
 import { ButtonNewSession } from "./buttonNewSession";
 import { ButtonTagSession } from "./buttonTagSession";
+import './style.css'
 
 export const SessionListView = ({ data }) => {
   return (
-    <div>
+    <div className="sessionListView" >
       <HomeLayer />
       <ButtonNewSession />
       <h1>Lista de sesiones creadas</h1>

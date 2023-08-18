@@ -7,6 +7,7 @@ import uuid from "react-uuid";
 import { useCreateSessionMutation, useEditSessionMutation } from "../../api/apiSideEndpoints";
 import { deleteAllSessionInfo } from "../../data/slices/sessionSlice";
 import {useNavigate} from 'react-router-dom'
+import './style.css'
 
 export const SessionEditorComponent = ({ rutinaInfo, sessionInfo }) => {
   const { data, status } = rutinaInfo;
@@ -49,23 +50,27 @@ export const SessionEditorComponent = ({ rutinaInfo, sessionInfo }) => {
   };
 
   return (
-    <div>
-      <h1>Session Editorr</h1>
+    <div className="sessionEditor" >
+      <h1>Session Editor</h1>
       <InfoSession sessionInfo={sessionInfo} />
       <p>Linea de tiempo de rutinas</p>
       <ListRutinasForSession sessionInfo={sessionInfo} />
-      <div>
-        <p>Ver Rutinas disponibles</p>
+      <div className="checkRutinas" >
+        <label for="checkRutina" >Ver Rutinas disponibles</label>
         <input
+          id="checkRutina"
           type="checkbox"
           checked={buttonRutinas}
           onChange={() => setButtonRutinas(!buttonRutinas)}
         />
-        <button onClick={handleSaveRutina}>Guardar sesion</button>
+        
       </div>
+      <button onClick={handleSaveRutina}>Guardar sesion</button>
+      <div className="listRutinasSession" >
       {buttonRutinas &&
         rutinas.length > 0 &&
         rutinas.map((rutina) => <RutinaTagSession rutina={rutina} />)}
+      </div>
     </div>
   );
 };
